@@ -3,25 +3,31 @@ import io
 import Geohash
 
 index = 0
-filepath = 'TABLE_BUILDING_IN.sql'
+filepath = 'TABLE_LOCATION.sql'
 with open(filepath) as fp:
     line = fp.readline()
     cnt = 1
     while line:
-        if cnt >= 9:
+        if cnt >= 10:
             for word in line.split("\'"):
                 if word not in ['(',',','),\n','\n',');']:
                     if index == 0:
-                        bid = word
+                        District = word
                         index += 1
                     elif index == 1:
-                        lon = word
+                        Neighborhood = word
                         index += 1
                     elif index == 2:
+                        lon = word
+                        index += 1
+                    elif index == 3:
                         lat = word
                         index = 0
-            geohash = Geohash.encode(float(lat), float(lon))
-            print("('"+ bid + "\',\'" + lon + "\',\'" + lat + "\',\'" + str(geohash)+"\'),")
+            if lon == '' or lat == '':
+                geohash = ''
+            else:
+                geohash = Geohash.encode(float(lat), float(lon))
+            print("('"+ District + "\',\'" + Neighborhood + "\',\'" + str(geohash)+"\'),")
         else:
             print(line, end='')
         line = fp.readline()
