@@ -1,7 +1,8 @@
-CREATE TABLE IF NOT EXISTS `Vacant_Building` (
-`BID` VARCHAR(MAX) NULL,
-`Block` VARCHAR(MAX) NULL,
-`BuildingAddress` VARCHAR(MAX) NULL
+DROP TABLE IF EXISTS Vacant_Building;
+CREATE TABLE IF NOT EXISTS  Vacant_Building   (
+    BID  VARCHAR(100) NULL,
+    Block    VARCHAR(100) NULL,
+    BuildingAddress  VARCHAR(100) NULL
 );
 
 INSERT INTO Vacant_Building VALUES
