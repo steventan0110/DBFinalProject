@@ -2,22 +2,26 @@ from __future__ import print_function
 import io
 import Geohash
 
-first = True
-filepath = 'TABLE_CRIME_IN.sql'
+index = 0
+filepath = 'TABLE_BUILDING_IN.sql'
 with open(filepath) as fp:
     line = fp.readline()
     cnt = 1
     while line:
-        if cnt >= 9 and line !="('',''),\n":
+        if cnt >= 9:
             for word in line.split("\'"):
                 if word not in ['(',',','),\n','\n',');']:
-                    if first:
+                    if index == 0:
+                        bid = word
+                        index += 1
+                    elif index == 1:
                         lon = word
-                    else:
+                        index += 1
+                    elif index == 2:
                         lat = word
-                    first = not first
+                        index = 0
             geohash = Geohash.encode(float(lat), float(lon))
-            print("('" + lon + "\',\'" + lat + "\',\'" + str(geohash)+"\'),")
+            print("('"+ bid + "\',\'" + lon + "\',\'" + lat + "\',\'" + str(geohash)+"\'),")
         else:
             print(line, end='')
         line = fp.readline()
