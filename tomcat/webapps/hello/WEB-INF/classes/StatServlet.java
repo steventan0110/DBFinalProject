@@ -32,13 +32,19 @@ public class StatServlet extends HttpServlet {
          // Step 2: Allocate a 'Statement' object in the Connection
          Statement stmt = conn.createStatement();
       ) {
-         // Step 3: Execute a SQL SELECT query
-         String sqlStr = "select * from Crime where CrimeCode = "
-               + "'" + request.getParameter("code") + "';";
+          //first we need to compute GEOHASH based on the user input longitude and latitude
+          String geohash;
 
-         out.println("<h3>Thank you for your query.</h3>");
-         out.println("<p>Your SQL statement is: " + sqlStr + "</p>"); // Echo for debugging
-         ResultSet rset = stmt.executeQuery(sqlStr);  // Send the query to the server
+
+
+
+
+         // Show all historical results associated with that geohash
+         String sql1 = "SELECT CrimeDate, CrimeTime, Location FROM Crime_In CI AND Crime C WHERE CI.Geohash = " + geohash 
+            + "AND CI.CID = C.CID;";
+
+         out.println("<p>Your SQL statement is: " + sql1 + "</p>"); // Echo for debugging
+         ResultSet rset = stmt.executeQuery(sql1);  // Send the query to the server
 
          // Step 4: Process the query result set
          int count = 0;
@@ -46,20 +52,44 @@ public class StatServlet extends HttpServlet {
          out.println("<tr>");
          out.println("<th>");
          out.println("Crime Date");
+         out.println("</th>");
+         out.println("<th>");
          out.println("Crime Time");
+         out.println("</th>");
+         out.println("<th>");
          out.println("Crime Location");
          out.println("</th>");
          out.println("</tr>");
          while(rset.next()) {
             // Print a paragraph <p>...</p> for each record
             out.println("<tr>");
-            out.println("<td>" + rset.getString("CrimeDate")
-                  + ", " + rset.getString("CrimeTime")
-                  + ", " + rset.getString("Location") + "</td>");
-            out.println("/<tr>");
+            out.println("<td>" + rset.getString("CrimeDate") +"</td>\n"
+                +"<td>" + rset.getString("CrimeTime") +"</td>\n"
+                + "<td>" + rset.getString("Location") + "</td>");
+            out.println("</tr>");
             count++;
          }
+         out.println("</table>");
          out.println("<p>==== " + count + " records found =====</p>");
+
+
+
+          //second query, find the safeset hour in user's area
+         String sql2 = "SELECT FROM Crime_In as CI, Crime as C WHERE CI.CID = C.CID"
+         + "AND CI.Geohash = " + geohash + "Group by CrimeTime Order By Count(CrimeTime) Limit 1";
+         
+         ResultSet rset1 = stmt.executeQuery(sql1);
+         while (rset1.next()) {
+             
+         }
+          //third query: most dangerous district
+
+          //fourth query: most dangerous neighborhood
+
+          //fifth query: most dangerous vacant building
+
+
+        
       } catch(Exception ex) {
          out.println("<p>Error: " + ex.getMessage() + "</p>");
          out.println("<p>Check Tomcat console for details.</p>");
