@@ -6,6 +6,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import ch.hsr.geohash.queries.GeoHashCircleQuery;
 import ch.hsr.geohash.WGS84Point;
+import ch.hsr.geohash.GeoHash;
 
 @WebServlet("/crimeStats")   // Configure the request URL for this servlet (Tomcat 7/Servlet 3.0 upwards)
 public class StatServlet extends HttpServlet {
@@ -25,8 +26,8 @@ public class StatServlet extends HttpServlet {
       out.println("<body>");
 
       try {
-         boolean result = testIssue3WithCircleQuery();
-         out.println("RESULT="+result);
+         out.println("GEOHASH=");
+         out.println(getGeohash(39.30921335,-76.65101962,12));
       } catch (Exception e) {
          out.println(e);
       }
@@ -111,16 +112,21 @@ public class StatServlet extends HttpServlet {
 //       out.close();
 //    }
 
-   //TODO testing!!
-	public boolean testIssue3WithCircleQuery() throws Exception {
-		WGS84Point center = new WGS84Point(39.86391280373075, 116.37356590048701);
-		GeoHashCircleQuery query = new GeoHashCircleQuery(center, 589);
-
-		// the distance between center and test1 is about 430 meters
-		WGS84Point test1 = new WGS84Point(39.8648866576058, 116.378465869303);
-		// the distance between center and test2 is about 510 meters
-		WGS84Point test2 = new WGS84Point(39.8664787092599, 116.378552856158);
-
-      return (query.contains(test1) && query.contains(test2));
+   // returns a geohash string from lon lat and character precision
+	public String getGeohash(double lon, double lat, int precision) throws Exception {
+      String gh =  GeoHash.geoHashStringWithCharacterPrecision(lat, lon, precision);
+      return gh;
 	}
+
+   // public String testIssue3WithCircleQuery(float lon, float lat, ) throws Exception {
+	// 	WGS84Point center = new WGS84Point(39.86391280373075, 116.37356590048701);
+	// 	GeoHashCircleQuery query = new GeoHashCircleQuery(center, 589);
+
+	// 	// the distance between center and test1 is about 430 meters
+	// 	WGS84Point test1 = new WGS84Point(39.8648866576058, 116.378465869303);
+	// 	// the distance between center and test2 is about 510 meters
+	// 	WGS84Point test2 = new WGS84Point(39.8664787092599, 116.378552856158);
+
+   //    return (query.contains(test1) && query.contains(test2));
+	// }
 }
