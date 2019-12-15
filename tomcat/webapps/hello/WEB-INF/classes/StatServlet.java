@@ -1,7 +1,9 @@
 // To save as "<TOMCAT_HOME>\webapps\hello\WEB-INF\classes\QueryServlet.java".
 import java.io.*;
 import java.sql.*;
+import java.util.ListIterator;
 import java.util.*;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -29,121 +31,91 @@ public class StatServlet extends HttpServlet {
       double longitude = Double.parseDouble(request.getParameter("long"));
       double latitude = Double.parseDouble(request.getParameter("lat"));
       int r = Integer.parseInt(request.getParameter("radius"));
-
       //first we need to compute GEOHASH based on the user input longitude and latitude
+
+      try (
+         // Step 1: Allocate a database 'Connection' object
+         Connection conn = DriverManager.getConnection(
+               "jdbc:mysql://localhost:3306/project?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
+               "root", "twt123456");   // For MySQL
+               // The format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
+
+         // Step 2: Allocate a 'Statement' object in the Connection
+         Statement stmt = conn.createStatement();
+         
+         
+      ) {
+                //compute our geohash from user input
+                String geohash = getGeohash(longitude,latitude);
+                List<String> geohash_list = geohashCircleSearch(longitude,latitude,r);
+                ListIterator<String> iterator = geohash_list.listIterator(); 
+
+
+                  // Show all historical results associated with that geohash
+               String sql= "SELECT CrimeDate, CrimeTime, Location FROM Crime_In CI, Crime C WHERE CI.Geohash like " + "'" +iterator.next()
+               +"%"+ "'" + " AND CI.CID = C.CID;";
+                  
       
-      try {
-         String geohash = getGeohash(longitude,latitude);
-         List<String> geohash_list = geohashCircleSearch(longitude,latitude,r);
-         ListIterator<String> iterator = geohash_list.listIterator(); 
-         // out.println("GEOHASH="+iterator.next());
-         // // out.println("TEST");
-         while(iterator.hasNext()){
-            out.println("GEOHASH="+iterator.next());
-         }
+               out.println("<p>Your SQL statement is: " + sql + "</p>"); // Echo for debugging
+               ResultSet rset = stmt.executeQuery(sql);  // Send the query to the server
+      
+               // Step 4: Process the query result set
+               int count = 0;
+               out.println("<table>");
+               out.println("<tr>");
+               out.println("<th>");
+               out.println("Crime Date");
+               out.println("</th>");
+               out.println("<th>");
+               out.println("Crime Time");
+               out.println("</th>");
+               out.println("<th>");
+               out.println("Crime Location");
+               out.println("</th>");
+               out.println("</tr>");
+               while(rset.next()) {
+                  // Print a paragraph <p>...</p> for each record
+                  out.println("<tr>");
+                  out.println("<td>" + rset.getString("CrimeDate") +"</td>\n"
+                      +"<td>" + rset.getString("CrimeTime") +"</td>\n"
+                      + "<td>" + rset.getString("Location") + "</td>");
+                  out.println("</tr>");
+                  count++;
+               }
+               out.println("</table>");
+               out.println("<p>==== " + count + " records found =====</p>");
+
       } catch (Exception e) {
          out.println(e);
       }
       
     }
 
-//       try (
-//          // Step 1: Allocate a database 'Connection' object
-//          Connection conn = DriverManager.getConnection(
-//                "jdbc:mysql://localhost:3306/project?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
-//                "root", "twt123456");   // For MySQL
-//                // The format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
 
-//          // Step 2: Allocate a 'Statement' object in the Connection
-//          Statement stmt = conn.createStatement();
-//       ) {
-//           //first we need to compute GEOHASH based on the user input longitude and latitude
-//           String geohash;
-
-
-
-
-
-//          // Show all historical results associated with that geohash
-//          String sql1 = "SELECT CrimeDate, CrimeTime, Location FROM Crime_In CI AND Crime C WHERE CI.Geohash = " + geohash 
-//             + "AND CI.CID = C.CID;";
-
-//          out.println("<p>Your SQL statement is: " + sql1 + "</p>"); // Echo for debugging
-//          ResultSet rset = stmt.executeQuery(sql1);  // Send the query to the server
-
-//          // Step 4: Process the query result set
-//          int count = 0;
-//          out.println("<table>");
-//          out.println("<tr>");
-//          out.println("<th>");
-//          out.println("Crime Date");
-//          out.println("</th>");
-//          out.println("<th>");
-//          out.println("Crime Time");
-//          out.println("</th>");
-//          out.println("<th>");
-//          out.println("Crime Location");
-//          out.println("</th>");
-//          out.println("</tr>");
-//          while(rset.next()) {
-//             // Print a paragraph <p>...</p> for each record
-//             out.println("<tr>");
-//             out.println("<td>" + rset.getString("CrimeDate") +"</td>\n"
-//                 +"<td>" + rset.getString("CrimeTime") +"</td>\n"
-//                 + "<td>" + rset.getString("Location") + "</td>");
-//             out.println("</tr>");
-//             count++;
-//          }
-//          out.println("</table>");
-//          out.println("<p>==== " + count + " records found =====</p>");
-
-
-
-//           //second query, find the safeset hour in user's area
-//          String sql2 = "SELECT FROM Crime_In as CI, Crime as C WHERE CI.CID = C.CID"
-//          + "AND CI.Geohash = " + geohash + "Group by CrimeTime Order By Count(CrimeTime) Limit 1";
-         
-//          ResultSet rset1 = stmt.executeQuery(sql1);
-//          while (rset1.next()) {
-             
-//          }
-//           //third query: most dangerous district
-
-//           //fourth query: most dangerous neighborhood
-
-//           //fifth query: most dangerous vacant building
-
-
-        
-//       } catch(Exception ex) {
-//          out.println("<p>Error: " + ex.getMessage() + "</p>");
-//          out.println("<p>Check Tomcat console for details.</p>");
-//          ex.printStackTrace();
-//       }  // Step 5: Close conn and stmt - Done automatically by try-with-resources (JDK 7)
- 
-//       out.println("</body></html>");
-//       out.close();
-//    }
 
    // returns a geohash string from lon lat and character precision
-	public String getGeohash(double lon, double lat) throws Exception {
-      String gh =  GeoHash.geoHashStringWithCharacterPrecision(lat, lon, 12);
-      return gh;
-	}
+   public String getGeohash(double lon, double lat) throws Exception {
+    String gh =  GeoHash.geoHashStringWithCharacterPrecision(lat, lon, 12);
+    return gh;
+  }
 
-   // Radius is in METERS
-   public List<String> geohashCircleSearch(double lon, double lat, int radius) throws Exception {
-		WGS84Point center = new WGS84Point(lat, lon);
-		GeoHashCircleQuery query = new GeoHashCircleQuery(center, radius);
-      List<GeoHash> gh_list = query.getSearchHashes();
-      List<String> gh_string_list = new ArrayList<String>();
-      ListIterator<GeoHash> iterator = gh_list.listIterator(); 
-      while(iterator.hasNext()){
-         String temp = iterator.next().toBinaryString();
-         temp = temp.substring(0,temp.length() - temp.length()%5);
-         gh_string_list.add(GeoHash.fromBinaryString(temp).toBase32());
-      }
-      // gh_string_list.add("none");
-      return gh_string_list;
-	}
+ // Radius is in METERS
+ public List<String> geohashCircleSearch(double lon, double lat, int radius) throws Exception {
+      WGS84Point center = new WGS84Point(lat, lon);
+      GeoHashCircleQuery query = new GeoHashCircleQuery(center, radius);
+    List<GeoHash> gh_list = query.getSearchHashes();
+    List<String> gh_string_list = new ArrayList<String>();
+    ListIterator<GeoHash> iterator = gh_list.listIterator(); 
+    while(iterator.hasNext()){
+       String temp = iterator.next().toBinaryString();
+       temp = temp.substring(0,temp.length() - temp.length()%5);
+       gh_string_list.add(GeoHash.fromBinaryString(temp).toBase32());
+    }
+    // gh_string_list.add("none");
+    return gh_string_list;
+  }
 }
+
+
+
+
