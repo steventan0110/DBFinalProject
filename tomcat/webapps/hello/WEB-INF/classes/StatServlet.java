@@ -4,6 +4,7 @@ import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import ch.hsr.geohash.queries.GeoHashCircleQuery;
 
 @WebServlet("/crimeStats")   // Configure the request URL for this servlet (Tomcat 7/Servlet 3.0 upwards)
 public class StatServlet extends HttpServlet {
@@ -21,6 +22,8 @@ public class StatServlet extends HttpServlet {
       out.println("<html>");
       out.println("<head><title>Query Response</title></head>");
       out.println("<body>");
+
+      testIssue3WithCircleQuery();
 
       try (
          // Step 1: Allocate a database 'Connection' object
@@ -99,4 +102,18 @@ public class StatServlet extends HttpServlet {
       out.println("</body></html>");
       out.close();
    }
+
+   // TODO testing!!
+	public void testIssue3WithCircleQuery() throws Exception {
+		WGS84Point center = new WGS84Point(39.86391280373075, 116.37356590048701);
+		GeoHashCircleQuery query = new GeoHashCircleQuery(center, 589);
+
+		// the distance between center and test1 is about 430 meters
+		WGS84Point test1 = new WGS84Point(39.8648866576058, 116.378465869303);
+		// the distance between center and test2 is about 510 meters
+		WGS84Point test2 = new WGS84Point(39.8664787092599, 116.378552856158);
+
+      out.println("<p>TEST RESULT: " + query.contains(test1) + "</p>");
+      out.println("<p>TEST RESULT: " + query.contains(test2) + "</p>");
+	}
 }
