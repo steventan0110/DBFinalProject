@@ -118,15 +118,15 @@ public class StatServlet extends HttpServlet {
       return gh;
 	}
 
-   // public String testIssue3WithCircleQuery(float lon, float lat, ) throws Exception {
-	// 	WGS84Point center = new WGS84Point(39.86391280373075, 116.37356590048701);
-	// 	GeoHashCircleQuery query = new GeoHashCircleQuery(center, 589);
+   public List<String> geohashCircleSearch(float lon, float lat, ) throws Exception {
+		WGS84Point center = new WGS84Point(39.86391280373075, 116.37356590048701);
+		GeoHashCircleQuery query = new GeoHashCircleQuery(center, 589);
 
-	// 	// the distance between center and test1 is about 430 meters
-	// 	WGS84Point test1 = new WGS84Point(39.8648866576058, 116.378465869303);
-	// 	// the distance between center and test2 is about 510 meters
-	// 	WGS84Point test2 = new WGS84Point(39.8664787092599, 116.378552856158);
+		// the distance between center and test1 is about 430 meters
+		WGS84Point test1 = new WGS84Point(39.8648866576058, 116.378465869303);
+		// the distance between center and test2 is about 510 meters
+		WGS84Point test2 = new WGS84Point(39.8664787092599, 116.378552856158);
 
-   //    return (query.contains(test1) && query.contains(test2));
-	// }
+      return (query.contains(test1) && query.contains(test2));
+	}
 }
