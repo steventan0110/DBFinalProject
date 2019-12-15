@@ -25,9 +25,16 @@ public class StatServlet extends HttpServlet {
       out.println("<head><title>Query Response</title></head>");
       out.println("<body>");
 
+      double longitude = Double.parseDouble(request.getParameter("long"));
+      double latitude = Double.parseDouble(request.getParameter("lat"));
+      int r = Integer.parseInt(request.getParameter("radius"));
+
+      //first we need to compute GEOHASH based on the user input longitude and latitude
+      
+
       try {
-         out.println("GEOHASH=");
-         out.println(getGeohash(39.30921335,-76.65101962,12));
+         String geohash = getGeohash(longitude,latitude);
+         out.println("GEOHASH=" +geohash);
       } catch (Exception e) {
          out.println(e);
       }
@@ -113,8 +120,8 @@ public class StatServlet extends HttpServlet {
 //    }
 
    // returns a geohash string from lon lat and character precision
-	public String getGeohash(double lon, double lat, int precision) throws Exception {
-      String gh =  GeoHash.geoHashStringWithCharacterPrecision(lat, lon, precision);
+	public String getGeohash(double lon, double lat) throws Exception {
+      String gh =  GeoHash.geoHashStringWithCharacterPrecision(lat, lon, 12);
       return gh;
 	}
 
