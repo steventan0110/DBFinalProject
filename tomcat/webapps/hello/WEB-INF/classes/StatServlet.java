@@ -1,6 +1,7 @@
 // To save as "<TOMCAT_HOME>\webapps\hello\WEB-INF\classes\QueryServlet.java".
 import java.io.*;
 import java.sql.*;
+import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -31,10 +32,15 @@ public class StatServlet extends HttpServlet {
 
       //first we need to compute GEOHASH based on the user input longitude and latitude
       
-
       try {
-         String geohash = getGeohash(longitude,latitude);
-         out.println("GEOHASH=" +geohash);
+         //String geohash = getGeohash(longitude,latitude);
+         // List<String> geohash_list = geohashCircleSearch(longitude,latitude,r);
+         // ListIterator<String> iterator = geohash_list.listIterator(); 
+         // out.println("GEOHASH="+iterator.next());
+         out.println("TEST");
+         // while(iterator.hasNext()){
+         //    out.println("GEOHASH="+iterator.next());
+         // }
       } catch (Exception e) {
          out.println(e);
       }
@@ -125,15 +131,17 @@ public class StatServlet extends HttpServlet {
       return gh;
 	}
 
-   public List<String> geohashCircleSearch(float lon, float lat, ) throws Exception {
-		WGS84Point center = new WGS84Point(39.86391280373075, 116.37356590048701);
-		GeoHashCircleQuery query = new GeoHashCircleQuery(center, 589);
-
-		// the distance between center and test1 is about 430 meters
-		WGS84Point test1 = new WGS84Point(39.8648866576058, 116.378465869303);
-		// the distance between center and test2 is about 510 meters
-		WGS84Point test2 = new WGS84Point(39.8664787092599, 116.378552856158);
-
-      return (query.contains(test1) && query.contains(test2));
+   // Radius is in METERS
+   public List<String> geohashCircleSearch(double lon, double lat, int radius) throws Exception {
+		WGS84Point center = new WGS84Point(lat, lon);
+		// GeoHashCircleQuery query = new GeoHashCircleQuery(center, radius);
+      // List<GeoHash> gh_list = query.getSearchHashes();
+      List<String> gh_string_list = new ArrayList<String>();
+      // ListIterator<GeoHash> iterator = gh_list.listIterator(); 
+      // while(iterator.hasNext()){
+      //    gh_string_list.add(iterator.next().toBase32());
+      // }
+      gh_string_list.add("none");
+      return gh_string_list;
 	}
 }
