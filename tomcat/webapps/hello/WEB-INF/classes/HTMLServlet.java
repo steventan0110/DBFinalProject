@@ -49,16 +49,19 @@ public class HTMLServlet extends HttpServlet {
         out.println("<div id='homepage'>");
 
         out.println("<section id='services' class='clear'>");
-        out.println("<article class='one_third'>");
-        out.println("<iframe class='one_third' src='https://maps.google.com/maps?q=" +firstLocation+ "&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
-            + "frameborder='0'style='border:0' allowfullscreen></iframe>");
+        out.println("<article class='one_quarter'>");
         out.println("<strong>Historical Results Associated With Your Geo Location</strong>");
+
+
         //start the query
         //parameter for query initialization
         double longitude = Double.parseDouble(request.getParameter("long"));
         double latitude = Double.parseDouble(request.getParameter("lat"));
         int r = Integer.parseInt(request.getParameter("radius"));
         String firstLocation ="";
+        String secondLocation ="";
+        String thirdLocation ="";
+      
 
         try (
             // Step 1: Allocate a database 'Connection' object
@@ -69,6 +72,7 @@ public class HTMLServlet extends HttpServlet {
 
             // Step 2: Allocate a 'Statement' object in the Connection
             Statement stmt = conn.createStatement();
+             
         ) {
             //compute our geohash from user input
             String geohash = getGeohash(longitude,latitude);
@@ -124,6 +128,8 @@ public class HTMLServlet extends HttpServlet {
             out.println("</table>");
             out.println("<p>==== " + count + " historical crime records found =====</p>");
             out.println("</article>");
+
+
         } catch (Exception e) {
           out.println(e);
         }
@@ -140,17 +146,19 @@ public class HTMLServlet extends HttpServlet {
         ) {
 
             //start of second query 
-            String sql2 = "SELECT L.District, L.Neighborhood, Count(C.CID) AS COUNT "+
+            String sql2 = "SELECT L.District, Count(C.CID) AS COUNT "+
             "FROM Location L, Crime_in CI, Crime C "+
             "WHERE L.Neighborhood <> '' AND L.Neighborhood IS NOT NULL AND L.geohash = CI.geohash AND CI.CID = C.CID "+
             "Group By L.District "+
             "Order By COUNT DESC LIMIT 1";
 
             ResultSet rset2 = stmt.executeQuery(sql2);
-            out.println("<article class='one_third'>");
-            out.println("<figure><img src='images/demo/32x32.gif' width='32' height='32' alt=''></figure>");
+            rset2.next();
+            secondLocation = rset2.getString("District");
+            out.println("<article class='one_quarter'>");
+
             out.println("<strong>Most Dangerous District In Your Area</strong>");
-            out.println("<p> The most danagerous district is: " + rset2.getString("District") + " with " + rset2.getString("COUNT")+ " incidents" + "</p>");
+            out.println("<p> The most danagerous district is: " + secondLocation + " with " + rset2.getString("COUNT")+ " incidents" + "</p>");
             out.println("</article>");
                     
 
@@ -169,17 +177,18 @@ public class HTMLServlet extends HttpServlet {
             Statement stmt = conn.createStatement();
         ) {
             //start of the third query
-            String sql3 = "SELECT L.District, L.Neighborhood, Count(C.CID) AS COUNT "+
+            String sql3 = "SELECT L.Neighborhood, Count(C.CID) AS COUNT "+
             "FROM Location L, Crime_in CI, Crime C "+
             "WHERE L.Neighborhood <> '' AND L.Neighborhood IS NOT NULL AND L.geohash = CI.geohash AND CI.CID = C.CID "+
             "Group By L.Neighborhood "+
             "Order By COUNT DESC LIMIT 1";
 
             ResultSet rset3 = stmt.executeQuery(sql3);
-            out.println("<article class='one_third lastbox'>");
-            out.println("<figure><img src='images/demo/32x32.gif' width='32' height='32' alt=''></figure>");
+            rset3.next();
+            thirdLocation = rset3.getString("neighborhood");
+            out.println("<article class='one_quarter lastbox'>");
             out.println("<strong>Most Dangerou Neighborhood In Your Geo Location</strong>");
-            out.println("<p> The most danagerous neighborhood is: " + rset3.getString("neighborhood") + " with " + rset3.getString("COUNT")+ " incidents" + "</p>");
+            out.println("<p> The most danagerous neighborhood is: " + thirdLocation+ " with " + rset3.getString("COUNT")+ " incidents" + "</p>");
             out.println("</article>");
         } catch (Exception e) {
             out.println(e);
@@ -203,9 +212,8 @@ public class HTMLServlet extends HttpServlet {
                       +" Order By COUNT DESC LIMIT 1";
 
             ResultSet rset4 = stmt.executeQuery(sql4);
-
-            out.println("<article class='one_third lastbox'>");
-            out.println("<figure><img src='images/demo/32x32.gif' width='32' height='32' alt=''></figure>");
+            rset4.next();
+            out.println("<article class='one_quarter lastbox'>");
             out.println("<strong>Most Dangerou Neighborhood In Your Geo Location</strong>");
             out.println("<p> The most danagerous vacant building is: " + rset4.getString("BID") + " with " + rset4.getString("COUNT")+ " incidents" + "</p>");
             out.println("</article>");
@@ -214,14 +222,13 @@ public class HTMLServlet extends HttpServlet {
         }
             out.println("</section>");
 
-
             //this is the section for map api
             out.println("<section id='latest'>");
-            out.println("<iframe class='one_third' src='https://maps.google.com/maps?q=" +firstLocation+ "&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
+            out.println("<iframe class='one_quarter' src='https://maps.google.com/maps?q=" +firstLocation+ "&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
             + "frameborder='0'style='border:0' allowfullscreen></iframe>");
-            out.println("<iframe class='one_third' src='https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
+            out.println("<iframe class='one_quarter' src='https://maps.google.com/maps?q=" +secondLocation+ "Baltimore" + "&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
             + "frameborder='0'style='border:0' allowfullscreen></iframe>");
-            out.println("<iframe class='one_third last' src='https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
+            out.println("<iframe class='one_quarter lastbox' src='https://maps.google.com/maps?q=" +thirdLocation+ "Baltimore" + "&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
             + "frameborder='0'style='border:0' allowfullscreen></iframe>");
             out.println("</section>");
             out.println("</div>");
