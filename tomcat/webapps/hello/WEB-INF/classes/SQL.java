@@ -85,27 +85,40 @@ public class StatServlet extends HttpServlet {
          + "AND CI.Geohash = " + geohash + "Group by CrimeTime Order By Count(CrimeTime) Limit 1";
          
          ResultSet rset1 = stmt.executeQuery(sql1);
-         out.println("<p> The saftest hour based on your location is: " + rset1.getString("CrimeTime") + "</p>");
+         out.println("<p> The saftest hour is: " + rset1.getString("CrimeTime") + "</p>");
 
        
           //third query: most dangerous district
-          String sql2 = "SELECT L.District, Count(CID) AS COUNT FROM Location L, Crime_in CI, Crime C WHERE L.geohash = CI.geohash AND "+
-          "CI.CID = C.CID Group By L.District Order By Count(L.District) DESC limit 1";
+          String sql2 = "SELECT L.District, L.Neighborhood, Count(C.CID) AS COUNT "+
+          "FROM Location L, Crime_in CI, Crime C "+
+          "WHERE L.Neighborhood <> '' AND L.Neighborhood IS NOT NULL AND L.geohash = CI.geohash AND CI.CID = C.CID "+
+          "Group By L.District "+
+          "Order By COUNT DESC LIMIT 1";
 
           ResultSet rset2 = stmt.executeQuery(sql2);
-          out.println("<p> The most danagerous district based on your location is: " + rset2.getString("District") + "</p>");
+          out.println("<p> The most danagerous district is: " + rset2.getString("District") + " with " + rset2.getString("COUNT")+ " incidents" + "</p>");
 
           //fourth query: most dangerous neighborhood
-          String sql3 = "SELECT L.District CountCrimeTime FROM Location L, Crime_in CI, Crime C WHERE L.geohash = CI.geohash AND "+
-          "CI.CID = C.CID Group By L.District Order By Count(L.District) DESC limit 1";
+          String sql3 = "SELECT L.District, L.Neighborhood, Count(C.CID) AS COUNT "+
+          "FROM Location L, Crime_in CI, Crime C "+
+          "WHERE L.Neighborhood <> '' AND L.Neighborhood IS NOT NULL AND L.geohash = CI.geohash AND CI.CID = C.CID "+
+          "Group By L.Neighborhood "+
+          "Order By COUNT DESC LIMIT 1";
 
           ResultSet rset3 = stmt.executeQuery(sql3);
-          out.println("<p> The most danagerous district based on your location is: " + rset3.getString("CrimeTime") + "</p>");
+          out.println("<p> The most danagerous neighborhood is: " + rset3.getString("neighborhood") + " with " + rset2.getString("COUNT")+ " incidents" + "</p>");
 
           //fifth query: most dangerous vacant building
+          String sql4 = "SELECT BI.BID, Count(CI.CID) AS COUNT"
+                     +" FROM Crime_in CI, Building_In BI"
+                     +" WHERE CI.geohash like CONCAT(LEFT(BI.geohash, 7),'%')"
+                     +" Group By BI.BID"
+                     +" Order By COUNT DESC LIMIT 1";
+
+         ResultSet rset4 = stmt.executeQuery(sql3);
+         out.println("<p> The most danagerous vacant building is: " + rset3.getString("BID") + " with " + rset2.getString("COUNT")+ " incidents" + "</p>");
 
 
-        
       } catch(Exception ex) {
          out.println("<p>Error: " + ex.getMessage() + "</p>");
          out.println("<p>Check Tomcat console for details.</p>");
