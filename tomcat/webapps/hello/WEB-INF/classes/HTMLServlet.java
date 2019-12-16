@@ -7,9 +7,11 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import ch.hsr.geohash.queries.GeoHashCircleQuery;
+import ch.hsr.geohash.WGS84Point;
+import ch.hsr.geohash.GeoHash;
 
-
-@WebServlet("/test")   // Configure the request URL for this servlet (Tomcat 7/Servlet 3.0 upwards)
+@WebServlet("/crimeStat")   // Configure the request URL for this servlet (Tomcat 7/Servlet 3.0 upwards)
 public class HTMLServlet extends HttpServlet {
 
    // The doGet() runs once per HTTP GET request to this servlet.
@@ -89,7 +91,7 @@ public class HTMLServlet extends HttpServlet {
                 used_list.add(hash);
             }
                
-            out.println("<p>Your SQL statement is: " + sql + "</p>"); // Echo for debugging
+            //out.println("<p>Your SQL statement is: " + sql + "</p>"); // Echo for debugging
                 
             ResultSet rset = stmt.executeQuery(sql);  // Send the query to the server
             // Step 4: Process the query result set
@@ -106,8 +108,10 @@ public class HTMLServlet extends HttpServlet {
             out.println("Crime Location");
             out.println("</th>");
             out.println("</tr>");
+
+            String firstLocation ="";
             while(rset.next()) {
-                // Print a paragraph <p>...</p> for each record
+                firstLocation = rset.getString("Location");
                 out.println("<tr>");
                 out.println("<td>" + rset.getString("CrimeDate") +"</td>\n"
                     +"<td>" + rset.getString("CrimeTime") +"</td>\n"
@@ -117,42 +121,64 @@ public class HTMLServlet extends HttpServlet {
             }
             out.println("</table>");
             out.println("<p>==== " + count + " records found =====</p>");
+
+            out.println("<p>xxx</p>");
+            out.println("</article>");
+            //second query 
+            out.println("<article class='one_third'>");
+            out.println("<figure><img src='images/demo/32x32.gif' width='32' height='32' alt=''></figure>");
+            out.println("<strong>Historical Results Associated With Your Geo Location</strong>");
+            out.println("<p>xxx</p>");
+            out.println("</article>");
+                    
+            out.println("<article class='one_third lastbox'>");
+            out.println("<figure><img src='images/demo/32x32.gif' width='32' height='32' alt=''></figure>");
+            out.println("<strong>Historical Results Associated With Your Geo Location</strong>");
+            out.println("<p>xxx</p>");
+            out.println("</article>");
+    
+            out.println("</section>");
+
+
+            //this is the section for map api
+            out.println("<section id='latest'>");
+            out.println("<iframe class='one_third' src='https://maps.google.com/maps?q=" +firstLocation+ "&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
+            + "frameborder='0'style='border:0' allowfullscreen></iframe>");
+            out.println("<iframe class='one_third' src='https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
+            + "frameborder='0'style='border:0' allowfullscreen></iframe>");
+            out.println("<iframe class='one_third last' src='https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
+            + "frameborder='0'style='border:0' allowfullscreen></iframe>");
+            out.println("</section>");
+            out.println("</div>");
+    
+            out.println("</body>");
+            out.println("</html>");
         } catch (Exception e) {
             out.println(e);
         }
-        out.println("<p>xxx</p>");
-        out.println("</article>");
+      }
 
-        out.println("<article class='one_third'>");
-        out.println("<figure><img src='images/demo/32x32.gif' width='32' height='32' alt=''></figure>");
-        out.println("<strong>Historical Results Associated With Your Geo Location</strong>");
-        out.println("<p>xxx</p>");
-        out.println("</article>");
-                
-        out.println("<article class='one_third lastbox'>");
-        out.println("<figure><img src='images/demo/32x32.gif' width='32' height='32' alt=''></figure>");
-        out.println("<strong>Historical Results Associated With Your Geo Location</strong>");
-        out.println("<p>xxx</p>");
-        out.println("</article>");
-
-        out.println("</section>");
-        //this is the section for map api
-        out.println("<section id='latest'>");
-        out.println("<iframe class='one_third' src='https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
-        + "frameborder='0'style='border:0' allowfullscreen></iframe>");
-        out.println("<iframe class='one_third' src='https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
-        + "frameborder='0'style='border:0' allowfullscreen></iframe>");
-        out.println("<iframe class='one_third last' src='https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
-        + "frameborder='0'style='border:0' allowfullscreen></iframe>");
-        out.println("</section>");
-        out.println("</div>");
-
-        out.println("</body>");
-        out.println("</html>");
-
-        // out.println(");
-        // out.println(");
-    }
+      // returns a geohash string from lon lat and character precision
+      public String getGeohash(double lon, double lat) throws Exception {
+         String gh =  GeoHash.geoHashStringWithCharacterPrecision(lat, lon, 12);
+         return gh;
+      }
+  
+      // Radius is in METERS
+      public List<String> geohashCircleSearch(double lon, double lat, int radius) throws Exception {
+         WGS84Point center = new WGS84Point(lat, lon);
+         GeoHashCircleQuery query = new GeoHashCircleQuery(center, radius);
+         List<GeoHash> gh_list = query.getSearchHashes();
+         List<String> gh_string_list = new ArrayList<String>();
+         ListIterator<GeoHash> iterator = gh_list.listIterator(); 
+         while(iterator.hasNext()){
+            String temp = iterator.next().toBinaryString();
+            temp = temp.substring(0,temp.length() - temp.length()%5);
+            gh_string_list.add(GeoHash.fromBinaryString(temp).toBase32());
+         }
+         // gh_string_list.add("none");
+         return gh_string_list;
+      }
 }
 
 
