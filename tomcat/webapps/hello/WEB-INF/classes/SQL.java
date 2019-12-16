@@ -96,6 +96,11 @@ public class StatServlet extends HttpServlet {
           out.println("<p> The most danagerous district based on your location is: " + rset2.getString("CrimeTime") + "</p>");
 
           //fourth query: most dangerous neighborhood
+          String sql3 = "SELECT L.District CountCrimeTime FROM Location L, Crime_in CI, Crime C WHERE L.geohash = CI.geohash AND "+
+          "CI.CID = C.CID Group By L.District Order By Count(L.District) DESC limit 1";
+
+          ResultSet rset3 = stmt.executeQuery(sql3);
+          out.println("<p> The most danagerous district based on your location is: " + rset3.getString("CrimeTime") + "</p>");
 
           //fifth query: most dangerous vacant building
 

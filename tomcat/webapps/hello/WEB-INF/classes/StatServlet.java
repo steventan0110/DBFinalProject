@@ -50,15 +50,27 @@ public class StatServlet extends HttpServlet {
                 List<String> geohash_list = geohashCircleSearch(longitude,latitude,r);
                 ListIterator<String> iterator = geohash_list.listIterator(); 
 
+               String sql = "";
+               String hash = iterator.next();
+               sql += "SELECT CrimeDate, CrimeTime, Location FROM Crime_In CI, Crime C WHERE CI.Geohash like " + "'" + hash
+                  +"%"+ "'" + " AND CI.CID = C.CID\n";
+               ArrayList<String> used_list = new ArrayList<>();
+               used_list.add(hash);
 
+               while (iterator.hasNext()) {
                   // Show all historical results associated with that geohash
-               String sql= "SELECT CrimeDate, CrimeTime, Location FROM Crime_In CI, Crime C WHERE CI.Geohash like " + "'" +iterator.next()
-               +"%"+ "'" + " AND CI.CID = C.CID;";
-                  
-      
+                  hash = iterator.next();
+                  if (used_list.contains(hash)) {
+                     continue;
+                  }
+                  sql += "UNION \nSELECT CrimeDate, CrimeTime, Location FROM Crime_In CI, Crime C WHERE CI.Geohash like " + "'" + hash
+                  +"%"+ "'" + " AND CI.CID = C.CID\n";
+                  used_list.add(hash);
+               }
+               
                out.println("<p>Your SQL statement is: " + sql + "</p>"); // Echo for debugging
+               
                ResultSet rset = stmt.executeQuery(sql);  // Send the query to the server
-      
                // Step 4: Process the query result set
                int count = 0;
                out.println("<table>");
