@@ -89,11 +89,11 @@ public class StatServlet extends HttpServlet {
 
        
           //third query: most dangerous district
-          String sql2 = "SELECT L.District CountCrimeTime FROM Location L, Crime_in CI, Crime C WHERE L.geohash = CI.geohash AND "+
+          String sql2 = "SELECT L.District, Count(CID) AS COUNT FROM Location L, Crime_in CI, Crime C WHERE L.geohash = CI.geohash AND "+
           "CI.CID = C.CID Group By L.District Order By Count(L.District) DESC limit 1";
 
           ResultSet rset2 = stmt.executeQuery(sql2);
-          out.println("<p> The most danagerous district based on your location is: " + rset2.getString("CrimeTime") + "</p>");
+          out.println("<p> The most danagerous district based on your location is: " + rset2.getString("District") + "</p>");
 
           //fourth query: most dangerous neighborhood
           String sql3 = "SELECT L.District CountCrimeTime FROM Location L, Crime_in CI, Crime C WHERE L.geohash = CI.geohash AND "+
