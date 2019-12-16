@@ -109,14 +109,17 @@ public class StatServlet extends HttpServlet {
           out.println("<p> The most danagerous neighborhood is: " + rset3.getString("neighborhood") + " with " + rset2.getString("COUNT")+ " incidents" + "</p>");
 
           //fifth query: most dangerous vacant building
-          String sql4 = "SELECT BI.BID, Count(CI.CID) AS COUNT"
+          String sql4 = "SELECT B.Block, B.BuildingAddress, BI.COUNT"
+                     +" FROM(SELECT BI.BID, Count(CI.CID) AS COUNT"
                      +" FROM Crime_in CI, Building_In BI"
                      +" WHERE CI.geohash like CONCAT(LEFT(BI.geohash, 7),'%')"
                      +" Group By BI.BID"
-                     +" Order By COUNT DESC LIMIT 1";
+                     +" Order By COUNT DESC LIMIT 1) BI,"
+                     +" Vacant_Building B"
+                     +" WHERE B.BID = BI.BID";
 
          ResultSet rset4 = stmt.executeQuery(sql3);
-         out.println("<p> The most danagerous vacant building is: " + rset3.getString("BID") + " with " + rset2.getString("COUNT")+ " incidents" + "</p>");
+         out.println("<p> The most danagerous vacant building is at Block " + rset3.getString("Block") + " Address" + rset3.getString("BuildingAddress") +" with " + rset2.getString("COUNT")+ " incidents" + "</p>");
 
 
       } catch(Exception ex) {
