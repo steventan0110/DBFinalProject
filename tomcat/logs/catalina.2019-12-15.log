@@ -748,3 +748,275 @@
 		at org.apache.catalina.connector.Connector.destroyInternal(Connector.java:1038)
 		... 7 more
 15-Dec-2019 18:03:06.801 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:00:10.567 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.29
+15-Dec-2019 19:00:10.569 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Nov 16 2019 17:29:07 UTC
+15-Dec-2019 19:00:10.569 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.29.0
+15-Dec-2019 19:00:10.569 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+15-Dec-2019 19:00:10.569 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.14.6
+15-Dec-2019 19:00:10.569 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+15-Dec-2019 19:00:10.569 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre
+15-Dec-2019 19:00:10.570 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_131-b11
+15-Dec-2019 19:00:10.570 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+15-Dec-2019 19:00:10.570 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat
+15-Dec-2019 19:00:10.570 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat
+15-Dec-2019 19:00:10.578 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/conf/logging.properties
+15-Dec-2019 19:00:10.578 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+15-Dec-2019 19:00:10.578 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+15-Dec-2019 19:00:10.578 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+15-Dec-2019 19:00:10.578 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+15-Dec-2019 19:00:10.578 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+15-Dec-2019 19:00:10.580 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat
+15-Dec-2019 19:00:10.581 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat
+15-Dec-2019 19:00:10.581 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/temp
+15-Dec-2019 19:00:10.581 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/williamli/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+15-Dec-2019 19:00:10.852 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:00:10.885 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:00:10.887 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [483] milliseconds
+15-Dec-2019 19:00:10.919 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+15-Dec-2019 19:00:10.919 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.29]
+15-Dec-2019 19:00:10.928 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/docs]
+15-Dec-2019 19:00:11.257 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:00:11.287 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/docs] has finished in [360] ms
+15-Dec-2019 19:00:11.287 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/manager]
+15-Dec-2019 19:00:11.406 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:00:11.410 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/manager] has finished in [123] ms
+15-Dec-2019 19:00:11.410 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/examples]
+15-Dec-2019 19:00:11.808 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:00:11.822 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/examples] has finished in [412] ms
+15-Dec-2019 19:00:11.822 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/ROOT]
+15-Dec-2019 19:00:11.938 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:00:11.939 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/ROOT] has finished in [117] ms
+15-Dec-2019 19:00:11.940 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/hello]
+15-Dec-2019 19:00:12.029 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:00:12.034 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/hello] has finished in [94] ms
+15-Dec-2019 19:00:12.034 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/host-manager]
+15-Dec-2019 19:00:12.118 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:00:12.120 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/host-manager] has finished in [86] ms
+15-Dec-2019 19:00:12.123 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:00:12.128 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:00:12.130 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [1,242] milliseconds
+15-Dec-2019 19:00:53.966 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:00:55.974 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:00:57.976 INFO [Thread-5] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+15-Dec-2019 19:00:58.000 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:00:58.002 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:00:58.003 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:00:58.004 SEVERE [Thread-5] org.apache.catalina.util.LifecycleBase.handleSubClassException Failed to destroy component [Connector[HTTP/1.1-8080]]
+	org.apache.catalina.LifecycleException: Protocol handler destroy failed
+		at org.apache.catalina.connector.Connector.destroyInternal(Connector.java:1042)
+		at org.apache.catalina.util.LifecycleBase.destroy(LifecycleBase.java:321)
+		at org.apache.catalina.core.StandardService.destroyInternal(StandardService.java:546)
+		at org.apache.catalina.util.LifecycleBase.destroy(LifecycleBase.java:321)
+		at org.apache.catalina.core.StandardServer.destroyInternal(StandardServer.java:1065)
+		at org.apache.catalina.util.LifecycleBase.destroy(LifecycleBase.java:321)
+		at org.apache.catalina.startup.Catalina.stop(Catalina.java:707)
+		at org.apache.catalina.startup.Catalina$CatalinaShutdownHook.run(Catalina.java:803)
+	Caused by: java.io.IOException: No such file or directory
+		at sun.nio.ch.NativeThread.signal(Native Method)
+		at sun.nio.ch.ServerSocketChannelImpl.implCloseSelectableChannel(ServerSocketChannelImpl.java:292)
+		at java.nio.channels.spi.AbstractSelectableChannel.implCloseChannel(AbstractSelectableChannel.java:234)
+		at java.nio.channels.spi.AbstractInterruptibleChannel.close(AbstractInterruptibleChannel.java:115)
+		at org.apache.tomcat.util.net.NioEndpoint.doCloseServerSocket(NioEndpoint.java:355)
+		at org.apache.tomcat.util.net.NioEndpoint.unbind(NioEndpoint.java:337)
+		at org.apache.tomcat.util.net.AbstractEndpoint.destroy(AbstractEndpoint.java:1279)
+		at org.apache.coyote.AbstractProtocol.destroy(AbstractProtocol.java:690)
+		at org.apache.catalina.connector.Connector.destroyInternal(Connector.java:1038)
+		... 7 more
+15-Dec-2019 19:00:58.005 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:01:02.690 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.29
+15-Dec-2019 19:01:02.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Nov 16 2019 17:29:07 UTC
+15-Dec-2019 19:01:02.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.29.0
+15-Dec-2019 19:01:02.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+15-Dec-2019 19:01:02.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.14.6
+15-Dec-2019 19:01:02.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+15-Dec-2019 19:01:02.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre
+15-Dec-2019 19:01:02.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_131-b11
+15-Dec-2019 19:01:02.693 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+15-Dec-2019 19:01:02.693 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat
+15-Dec-2019 19:01:02.693 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat
+15-Dec-2019 19:01:02.700 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/conf/logging.properties
+15-Dec-2019 19:01:02.700 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+15-Dec-2019 19:01:02.700 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+15-Dec-2019 19:01:02.700 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+15-Dec-2019 19:01:02.700 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+15-Dec-2019 19:01:02.700 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+15-Dec-2019 19:01:02.703 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat
+15-Dec-2019 19:01:02.703 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat
+15-Dec-2019 19:01:02.703 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/temp
+15-Dec-2019 19:01:02.703 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/williamli/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+15-Dec-2019 19:01:02.962 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:01:02.995 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:01:02.997 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [472] milliseconds
+15-Dec-2019 19:01:03.029 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+15-Dec-2019 19:01:03.029 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.29]
+15-Dec-2019 19:01:03.038 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/docs]
+15-Dec-2019 19:01:03.369 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:01:03.402 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/docs] has finished in [365] ms
+15-Dec-2019 19:01:03.403 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/manager]
+15-Dec-2019 19:01:03.515 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:01:03.518 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/manager] has finished in [115] ms
+15-Dec-2019 19:01:03.519 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/examples]
+15-Dec-2019 19:01:03.786 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:01:03.803 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/examples] has finished in [284] ms
+15-Dec-2019 19:01:03.803 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/ROOT]
+15-Dec-2019 19:01:03.917 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:01:03.918 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/ROOT] has finished in [115] ms
+15-Dec-2019 19:01:03.919 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/hello]
+15-Dec-2019 19:01:04.031 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:01:04.035 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/hello] has finished in [117] ms
+15-Dec-2019 19:01:04.035 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/host-manager]
+15-Dec-2019 19:01:04.125 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:01:04.126 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/host-manager] has finished in [91] ms
+15-Dec-2019 19:01:04.129 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:01:04.135 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:01:04.137 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [1,139] milliseconds
+15-Dec-2019 19:02:41.492 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:02:43.569 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:02:45.571 INFO [Thread-5] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+15-Dec-2019 19:02:45.605 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:02:45.609 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:02:45.610 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:02:45.611 SEVERE [Thread-5] org.apache.catalina.util.LifecycleBase.handleSubClassException Failed to destroy component [Connector[HTTP/1.1-8080]]
+	org.apache.catalina.LifecycleException: Protocol handler destroy failed
+		at org.apache.catalina.connector.Connector.destroyInternal(Connector.java:1042)
+		at org.apache.catalina.util.LifecycleBase.destroy(LifecycleBase.java:321)
+		at org.apache.catalina.core.StandardService.destroyInternal(StandardService.java:546)
+		at org.apache.catalina.util.LifecycleBase.destroy(LifecycleBase.java:321)
+		at org.apache.catalina.core.StandardServer.destroyInternal(StandardServer.java:1065)
+		at org.apache.catalina.util.LifecycleBase.destroy(LifecycleBase.java:321)
+		at org.apache.catalina.startup.Catalina.stop(Catalina.java:707)
+		at org.apache.catalina.startup.Catalina$CatalinaShutdownHook.run(Catalina.java:803)
+	Caused by: java.io.IOException: Thread signal failed
+		at sun.nio.ch.NativeThread.signal(Native Method)
+		at sun.nio.ch.ServerSocketChannelImpl.implCloseSelectableChannel(ServerSocketChannelImpl.java:292)
+		at java.nio.channels.spi.AbstractSelectableChannel.implCloseChannel(AbstractSelectableChannel.java:234)
+		at java.nio.channels.spi.AbstractInterruptibleChannel.close(AbstractInterruptibleChannel.java:115)
+		at org.apache.tomcat.util.net.NioEndpoint.doCloseServerSocket(NioEndpoint.java:355)
+		at org.apache.tomcat.util.net.NioEndpoint.unbind(NioEndpoint.java:337)
+		at org.apache.tomcat.util.net.AbstractEndpoint.destroy(AbstractEndpoint.java:1279)
+		at org.apache.coyote.AbstractProtocol.destroy(AbstractProtocol.java:690)
+		at org.apache.catalina.connector.Connector.destroyInternal(Connector.java:1038)
+		... 7 more
+15-Dec-2019 19:02:45.612 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:02:52.784 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.29
+15-Dec-2019 19:02:52.786 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Nov 16 2019 17:29:07 UTC
+15-Dec-2019 19:02:52.786 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.29.0
+15-Dec-2019 19:02:52.786 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+15-Dec-2019 19:02:52.786 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.14.6
+15-Dec-2019 19:02:52.787 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+15-Dec-2019 19:02:52.787 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre
+15-Dec-2019 19:02:52.787 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_131-b11
+15-Dec-2019 19:02:52.787 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+15-Dec-2019 19:02:52.787 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat
+15-Dec-2019 19:02:52.787 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat
+15-Dec-2019 19:02:52.793 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/conf/logging.properties
+15-Dec-2019 19:02:52.793 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+15-Dec-2019 19:02:52.793 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+15-Dec-2019 19:02:52.793 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+15-Dec-2019 19:02:52.793 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+15-Dec-2019 19:02:52.793 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+15-Dec-2019 19:02:52.796 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat
+15-Dec-2019 19:02:52.796 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat
+15-Dec-2019 19:02:52.796 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/temp
+15-Dec-2019 19:02:52.796 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/williamli/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+15-Dec-2019 19:02:53.085 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:02:53.122 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:02:53.124 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [499] milliseconds
+15-Dec-2019 19:02:53.149 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+15-Dec-2019 19:02:53.149 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.29]
+15-Dec-2019 19:02:53.157 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/docs]
+15-Dec-2019 19:02:53.537 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:02:53.576 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/docs] has finished in [419] ms
+15-Dec-2019 19:02:53.576 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/manager]
+15-Dec-2019 19:02:53.707 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:02:53.712 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/manager] has finished in [135] ms
+15-Dec-2019 19:02:53.712 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/examples]
+15-Dec-2019 19:02:53.945 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:02:53.958 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/examples] has finished in [245] ms
+15-Dec-2019 19:02:53.958 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/ROOT]
+15-Dec-2019 19:02:54.060 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:02:54.061 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/ROOT] has finished in [103] ms
+15-Dec-2019 19:02:54.061 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/hello]
+15-Dec-2019 19:02:54.150 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:02:54.153 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/hello] has finished in [92] ms
+15-Dec-2019 19:02:54.153 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/host-manager]
+15-Dec-2019 19:02:54.234 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:02:54.236 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/host-manager] has finished in [82] ms
+15-Dec-2019 19:02:54.238 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:02:54.244 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:02:54.246 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [1,121] milliseconds
+15-Dec-2019 19:07:48.876 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:07:50.878 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:07:52.883 INFO [Thread-5] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+15-Dec-2019 19:07:52.913 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:07:52.915 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:07:52.917 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:07:52.918 SEVERE [Thread-5] org.apache.catalina.util.LifecycleBase.handleSubClassException Failed to destroy component [Connector[HTTP/1.1-8080]]
+	org.apache.catalina.LifecycleException: Protocol handler destroy failed
+		at org.apache.catalina.connector.Connector.destroyInternal(Connector.java:1042)
+		at org.apache.catalina.util.LifecycleBase.destroy(LifecycleBase.java:321)
+		at org.apache.catalina.core.StandardService.destroyInternal(StandardService.java:546)
+		at org.apache.catalina.util.LifecycleBase.destroy(LifecycleBase.java:321)
+		at org.apache.catalina.core.StandardServer.destroyInternal(StandardServer.java:1065)
+		at org.apache.catalina.util.LifecycleBase.destroy(LifecycleBase.java:321)
+		at org.apache.catalina.startup.Catalina.stop(Catalina.java:707)
+		at org.apache.catalina.startup.Catalina$CatalinaShutdownHook.run(Catalina.java:803)
+	Caused by: java.io.IOException: Thread signal failed
+		at sun.nio.ch.NativeThread.signal(Native Method)
+		at sun.nio.ch.ServerSocketChannelImpl.implCloseSelectableChannel(ServerSocketChannelImpl.java:292)
+		at java.nio.channels.spi.AbstractSelectableChannel.implCloseChannel(AbstractSelectableChannel.java:234)
+		at java.nio.channels.spi.AbstractInterruptibleChannel.close(AbstractInterruptibleChannel.java:115)
+		at org.apache.tomcat.util.net.NioEndpoint.doCloseServerSocket(NioEndpoint.java:355)
+		at org.apache.tomcat.util.net.NioEndpoint.unbind(NioEndpoint.java:337)
+		at org.apache.tomcat.util.net.AbstractEndpoint.destroy(AbstractEndpoint.java:1279)
+		at org.apache.coyote.AbstractProtocol.destroy(AbstractProtocol.java:690)
+		at org.apache.catalina.connector.Connector.destroyInternal(Connector.java:1038)
+		... 7 more
+15-Dec-2019 19:07:52.922 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:07:56.556 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.29
+15-Dec-2019 19:07:56.558 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Nov 16 2019 17:29:07 UTC
+15-Dec-2019 19:07:56.558 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.29.0
+15-Dec-2019 19:07:56.559 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+15-Dec-2019 19:07:56.559 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.14.6
+15-Dec-2019 19:07:56.559 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+15-Dec-2019 19:07:56.559 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre
+15-Dec-2019 19:07:56.559 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_131-b11
+15-Dec-2019 19:07:56.559 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+15-Dec-2019 19:07:56.559 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat
+15-Dec-2019 19:07:56.559 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat
+15-Dec-2019 19:07:56.568 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/conf/logging.properties
+15-Dec-2019 19:07:56.568 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+15-Dec-2019 19:07:56.568 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+15-Dec-2019 19:07:56.568 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+15-Dec-2019 19:07:56.568 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+15-Dec-2019 19:07:56.568 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+15-Dec-2019 19:07:56.569 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat
+15-Dec-2019 19:07:56.569 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat
+15-Dec-2019 19:07:56.569 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/temp
+15-Dec-2019 19:07:56.569 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/williamli/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+15-Dec-2019 19:07:56.838 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:07:56.873 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:07:56.875 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [488] milliseconds
+15-Dec-2019 19:07:56.909 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+15-Dec-2019 19:07:56.910 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.29]
+15-Dec-2019 19:07:56.919 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/docs]
+15-Dec-2019 19:07:57.437 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:07:57.480 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/docs] has finished in [561] ms
+15-Dec-2019 19:07:57.481 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/manager]
+15-Dec-2019 19:07:57.622 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:07:57.626 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/manager] has finished in [145] ms
+15-Dec-2019 19:07:57.627 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/examples]
+15-Dec-2019 19:07:57.905 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:07:57.977 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/examples] has finished in [350] ms
+15-Dec-2019 19:07:57.977 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/ROOT]
+15-Dec-2019 19:07:58.197 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:07:58.200 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/ROOT] has finished in [222] ms
+15-Dec-2019 19:07:58.200 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/hello]
+15-Dec-2019 19:07:58.342 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:07:58.346 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/hello] has finished in [146] ms
+15-Dec-2019 19:07:58.347 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/host-manager]
+15-Dec-2019 19:07:58.461 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Dec-2019 19:07:58.462 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/williamli/Desktop/Classes/Database/DBFinalProject/tomcat/webapps/host-manager] has finished in [115] ms
+15-Dec-2019 19:07:58.465 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+15-Dec-2019 19:07:58.473 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+15-Dec-2019 19:07:58.475 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [1,599] milliseconds
