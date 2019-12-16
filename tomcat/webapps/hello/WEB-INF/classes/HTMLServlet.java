@@ -50,6 +50,76 @@ public class HTMLServlet extends HttpServlet {
         out.println("<article class='one_third'>");
         out.println("<figure><img src='images/demo/32x32.gif' width='32' height='32' alt=''></figure>");
         out.println("<strong>Historical Results Associated With Your Geo Location</strong>");
+        //start the query
+        //parameter for query initialization
+        double longitude = Double.parseDouble(request.getParameter("long"));
+        double latitude = Double.parseDouble(request.getParameter("lat"));
+        int r = Integer.parseInt(request.getParameter("radius"));
+
+        try (
+            // Step 1: Allocate a database 'Connection' object
+            Connection conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/project?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
+                "root", "twt123456");   // For MySQL
+                // The format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
+
+            // Step 2: Allocate a 'Statement' object in the Connection
+            Statement stmt = conn.createStatement();
+        ) {
+            //compute our geohash from user input
+            String geohash = getGeohash(longitude,latitude);
+            List<String> geohash_list = geohashCircleSearch(longitude,latitude,r);
+            ListIterator<String> iterator = geohash_list.listIterator(); 
+
+            String sql = "";
+            String hash = iterator.next();
+            sql += "SELECT CrimeDate, CrimeTime, Location FROM Crime_In CI, Crime C WHERE CI.Geohash like " + "'" + hash
+                +"%"+ "'" + " AND CI.CID = C.CID\n";
+            ArrayList<String> used_list = new ArrayList<>();
+            used_list.add(hash);
+
+            while (iterator.hasNext()) {
+                // Show all historical results associated with that geohash
+                hash = iterator.next();
+                if (used_list.contains(hash)) {
+                    continue;
+                }
+                sql += "UNION \nSELECT CrimeDate, CrimeTime, Location FROM Crime_In CI, Crime C WHERE CI.Geohash like " + "'" + hash
+                    +"%"+ "'" + " AND CI.CID = C.CID\n";
+                used_list.add(hash);
+            }
+               
+            out.println("<p>Your SQL statement is: " + sql + "</p>"); // Echo for debugging
+                
+            ResultSet rset = stmt.executeQuery(sql);  // Send the query to the server
+            // Step 4: Process the query result set
+            int count = 0;
+            out.println("<table>");
+            out.println("<tr>");
+            out.println("<th>");
+            out.println("Crime Date");
+            out.println("</th>");
+            out.println("<th>");
+            out.println("Crime Time");
+            out.println("</th>");
+            out.println("<th>");
+            out.println("Crime Location");
+            out.println("</th>");
+            out.println("</tr>");
+            while(rset.next()) {
+                // Print a paragraph <p>...</p> for each record
+                out.println("<tr>");
+                out.println("<td>" + rset.getString("CrimeDate") +"</td>\n"
+                    +"<td>" + rset.getString("CrimeTime") +"</td>\n"
+                    + "<td>" + rset.getString("Location") + "</td>");
+                out.println("</tr>");
+                count++;
+            }
+            out.println("</table>");
+            out.println("<p>==== " + count + " records found =====</p>");
+        } catch (Exception e) {
+            out.println(e);
+        }
         out.println("<p>xxx</p>");
         out.println("</article>");
 
