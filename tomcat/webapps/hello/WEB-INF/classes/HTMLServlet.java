@@ -50,13 +50,15 @@ public class HTMLServlet extends HttpServlet {
 
         out.println("<section id='services' class='clear'>");
         out.println("<article class='one_third'>");
-        out.println("<figure><img src='images/demo/32x32.gif' width='32' height='32' alt=''></figure>");
+        out.println("<iframe class='one_third' src='https://maps.google.com/maps?q=" +firstLocation+ "&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
+            + "frameborder='0'style='border:0' allowfullscreen></iframe>");
         out.println("<strong>Historical Results Associated With Your Geo Location</strong>");
         //start the query
         //parameter for query initialization
         double longitude = Double.parseDouble(request.getParameter("long"));
         double latitude = Double.parseDouble(request.getParameter("lat"));
         int r = Integer.parseInt(request.getParameter("radius"));
+        String firstLocation ="";
 
         try (
             // Step 1: Allocate a database 'Connection' object
@@ -109,7 +111,7 @@ public class HTMLServlet extends HttpServlet {
             out.println("</th>");
             out.println("</tr>");
 
-            String firstLocation ="";
+            
             while(rset.next()) {
                 firstLocation = rset.getString("Location");
                 out.println("<tr>");
@@ -120,23 +122,96 @@ public class HTMLServlet extends HttpServlet {
                 count++;
             }
             out.println("</table>");
-            out.println("<p>==== " + count + " records found =====</p>");
-
-            out.println("<p>xxx</p>");
+            out.println("<p>==== " + count + " historical crime records found =====</p>");
             out.println("</article>");
-            //second query 
+        } catch (Exception e) {
+          out.println(e);
+        }
+
+        try (
+            // Step 1: Allocate a database 'Connection' object
+            Connection conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/project?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
+                "root", "twt123456");   // For MySQL
+                // The format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
+
+            // Step 2: Allocate a 'Statement' object in the Connection
+            Statement stmt = conn.createStatement();
+        ) {
+
+            //start of second query 
+            String sql2 = "SELECT L.District, L.Neighborhood, Count(C.CID) AS COUNT "+
+            "FROM Location L, Crime_in CI, Crime C "+
+            "WHERE L.Neighborhood <> '' AND L.Neighborhood IS NOT NULL AND L.geohash = CI.geohash AND CI.CID = C.CID "+
+            "Group By L.District "+
+            "Order By COUNT DESC LIMIT 1";
+
+            ResultSet rset2 = stmt.executeQuery(sql2);
             out.println("<article class='one_third'>");
             out.println("<figure><img src='images/demo/32x32.gif' width='32' height='32' alt=''></figure>");
-            out.println("<strong>Historical Results Associated With Your Geo Location</strong>");
-            out.println("<p>xxx</p>");
+            out.println("<strong>Most Dangerous District In Your Area</strong>");
+            out.println("<p> The most danagerous district is: " + rset2.getString("District") + " with " + rset2.getString("COUNT")+ " incidents" + "</p>");
             out.println("</article>");
                     
+
+        } catch (Exception e) {
+            out.println(e);
+        }
+
+        try (
+            // Step 1: Allocate a database 'Connection' object
+            Connection conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/project?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
+                "root", "twt123456");   // For MySQL
+                // The format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
+
+            // Step 2: Allocate a 'Statement' object in the Connection
+            Statement stmt = conn.createStatement();
+        ) {
+            //start of the third query
+            String sql3 = "SELECT L.District, L.Neighborhood, Count(C.CID) AS COUNT "+
+            "FROM Location L, Crime_in CI, Crime C "+
+            "WHERE L.Neighborhood <> '' AND L.Neighborhood IS NOT NULL AND L.geohash = CI.geohash AND CI.CID = C.CID "+
+            "Group By L.Neighborhood "+
+            "Order By COUNT DESC LIMIT 1";
+
+            ResultSet rset3 = stmt.executeQuery(sql3);
             out.println("<article class='one_third lastbox'>");
             out.println("<figure><img src='images/demo/32x32.gif' width='32' height='32' alt=''></figure>");
-            out.println("<strong>Historical Results Associated With Your Geo Location</strong>");
-            out.println("<p>xxx</p>");
+            out.println("<strong>Most Dangerou Neighborhood In Your Geo Location</strong>");
+            out.println("<p> The most danagerous neighborhood is: " + rset3.getString("neighborhood") + " with " + rset3.getString("COUNT")+ " incidents" + "</p>");
             out.println("</article>");
-    
+        } catch (Exception e) {
+            out.println(e);
+        }
+
+
+        try (
+            // Step 1: Allocate a database 'Connection' object
+            Connection conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/project?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
+                "root", "twt123456");   // For MySQL
+                // The format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
+
+            // Step 2: Allocate a 'Statement' object in the Connection
+            Statement stmt = conn.createStatement();
+        ) {
+            String sql4 = "SELECT BI.BID, Count(CI.CID) AS COUNT"
+                      +" FROM Crime_in CI, Building_In BI"
+                      +" WHERE CI.geohash like CONCAT(LEFT(BI.geohash, 7),'%')"
+                      +" Group By BI.BID"
+                      +" Order By COUNT DESC LIMIT 1";
+
+            ResultSet rset4 = stmt.executeQuery(sql4);
+
+            out.println("<article class='one_third lastbox'>");
+            out.println("<figure><img src='images/demo/32x32.gif' width='32' height='32' alt=''></figure>");
+            out.println("<strong>Most Dangerou Neighborhood In Your Geo Location</strong>");
+            out.println("<p> The most danagerous vacant building is: " + rset4.getString("BID") + " with " + rset4.getString("COUNT")+ " incidents" + "</p>");
+            out.println("</article>");
+        } catch (Exception e) {
+            out.println(e);
+        }
             out.println("</section>");
 
 
@@ -153,9 +228,6 @@ public class HTMLServlet extends HttpServlet {
     
             out.println("</body>");
             out.println("</html>");
-        } catch (Exception e) {
-            out.println(e);
-        }
       }
 
       // returns a geohash string from lon lat and character precision
