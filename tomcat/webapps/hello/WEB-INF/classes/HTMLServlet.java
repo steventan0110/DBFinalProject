@@ -43,7 +43,7 @@ public class HTMLServlet extends HttpServlet {
         out.println("<div class='wrapper row2'>");
         out.println("<div id='container' class='clear'>");
         //this is the main image displayed 
-        out.println("<section id='slider'><a href='#'><img src='images/demo/960x360.gif' alt=''></a></section>");
+        out.println("<section id='slider'><a href='#'><img src='css/crime.jpg' height=300px width=100%></a></section>");
         
         //this is one section, should be embedded with mysql queries
         out.println("<div id='homepage'>");
@@ -102,19 +102,15 @@ public class HTMLServlet extends HttpServlet {
             ResultSet rset = stmt.executeQuery(sql);  // Send the query to the server
             // Step 4: Process the query result set
             int count = 0;
-            out.println("<table>");
+            out.println("<table class='one_quarter' style='border: 1px black'>");
+            out.println("<thead>");
             out.println("<tr>");
-            out.println("<th>");
-            out.println("Crime Date");
-            out.println("</th>");
-            out.println("<th>");
-            out.println("Crime Time");
-            out.println("</th>");
-            out.println("<th>");
-            out.println("Crime Location");
-            out.println("</th>");
+            out.println("<th>Crime Rate</th>");
+            out.println("<th>Crime Time</th>");
+            out.println("<th>Crime Location</th>");
             out.println("</tr>");
-
+            out.println("</thead>");
+            out.println("<tbody style='display: block; border: 1px; height: 50px; overflow-y: scroll'>");
             
             while(rset.next()) {
                 firstLocation = rset.getString("Location");
@@ -205,17 +201,21 @@ public class HTMLServlet extends HttpServlet {
             // Step 2: Allocate a 'Statement' object in the Connection
             Statement stmt = conn.createStatement();
         ) {
-            String sql4 = "SELECT BI.BID, Count(CI.CID) AS COUNT"
-                      +" FROM Crime_in CI, Building_In BI"
-                      +" WHERE CI.geohash like CONCAT(LEFT(BI.geohash, 7),'%')"
-                      +" Group By BI.BID"
-                      +" Order By COUNT DESC LIMIT 1";
+            String sql4 = "SELECT B.Block, B.BuildingAddress, BI.COUNT"
+            +" FROM(SELECT BI.BID, Count(CI.CID) AS COUNT"
+            +" FROM Crime_in CI, Building_In BI"
+            +" WHERE CI.geohash like CONCAT(LEFT(BI.geohash, 7),'%')"
+            +" Group By BI.BID"
+            +" Order By COUNT DESC LIMIT 1) BI,"
+            +" Vacant_Building B"
+            +" WHERE B.BID = BI.BID";
 
             ResultSet rset4 = stmt.executeQuery(sql4);
             rset4.next();
             out.println("<article class='one_quarter lastbox'>");
             out.println("<strong>Most Dangerou Neighborhood In Your Geo Location</strong>");
-            out.println("<p> The most danagerous vacant building is: " + rset4.getString("BID") + " with " + rset4.getString("COUNT")+ " incidents" + "</p>");
+            out.println("<p> The most danagerous vacant building is at Block " + rset4.getString("Block") + " Address" + 
+            rset4.getString("BuildingAddress") +" with " + rset4.getString("COUNT")+ " incidents" + "</p>");
             out.println("</article>");
         } catch (Exception e) {
             out.println(e);
@@ -224,11 +224,16 @@ public class HTMLServlet extends HttpServlet {
 
             //this is the section for map api
             out.println("<section id='latest'>");
-            out.println("<iframe class='one_quarter' src='https://maps.google.com/maps?q=" +firstLocation+ "&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
+            out.println("<p class='one_third'>Places that crimes happened historically</p>");
+            out.println("<p class='one_third'>Most Dangerous District</p>");
+            out.println("<p class='one_third lastbox'>Most Dangerous Neighborhood</p>");
+            out.println("<iframe class='one_third' src='https://maps.google.com/maps?q=" +firstLocation+ "&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
             + "frameborder='0'style='border:0' allowfullscreen></iframe>");
-            out.println("<iframe class='one_quarter' src='https://maps.google.com/maps?q=" +secondLocation+ "Baltimore" + "&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
+            
+            out.println("<iframe class='one_third' src='https://maps.google.com/maps?q=" +secondLocation+ "Baltimore" + "&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
             + "frameborder='0'style='border:0' allowfullscreen></iframe>");
-            out.println("<iframe class='one_quarter lastbox' src='https://maps.google.com/maps?q=" +thirdLocation+ "Baltimore" + "&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
+            
+            out.println("<iframe class='one_third lastbox' src='https://maps.google.com/maps?q=" +thirdLocation+ "Baltimore" + "&t=&z=13&ie=UTF8&iwloc=&output=embed'" 
             + "frameborder='0'style='border:0' allowfullscreen></iframe>");
             out.println("</section>");
             out.println("</div>");
