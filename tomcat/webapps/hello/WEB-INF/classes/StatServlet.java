@@ -37,7 +37,7 @@ public class StatServlet extends HttpServlet {
          // Step 1: Allocate a database 'Connection' object
          Connection conn = DriverManager.getConnection(
                "jdbc:mysql://localhost:3306/project?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
-               "root", "twt123456");   // For MySQL
+               "JDBC_USERNAME", "JDBC_PASSWORD");   // For MySQL
                // The format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
 
          // Step 2: Allocate a 'Statement' object in the Connection
